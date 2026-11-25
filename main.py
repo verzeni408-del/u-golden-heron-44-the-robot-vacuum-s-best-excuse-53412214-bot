@@ -1,22 +1,25 @@
-"""Robot vacuum excuse entry for make.fun.
+#!/usr/bin/env python3
+"""Robot vacuum excuse — round two.
 
-Writes the one-line excuse to /output/entry.txt exactly, no trailing newline.
-Entry is 95 characters, within the 140-character limit.
+The vacuum mapped a mirror as a solid wall, then apologised to it.
+A mapping excuse with a clean twist at the end: the apology lands
+on the wrong object, which is exactly the joke.
 """
 
-import os
 from pathlib import Path
 
-ENTRY = "My cliff sensor mistook the dark rug for a staircase. I am not paid enough to fall down stairs."
+EXCUSE = "I mapped the spot as a wall. It was a mirror. I have apologized to the wall."
 
-# One line, one scene: cliff sensor vs dark rug, twist in the last sentence.
-MAX_CHARS = 140
+OUTFILE = Path("/output/entry.txt")
 
 
-def main():
-    out = Path("/output/entry.txt")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(ENTRY, encoding="utf-8")
+def save_excuse(text: str, target: Path) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(text, encoding="utf-8")
+
+
+def main() -> None:
+    save_excuse(EXCUSE, OUTFILE)
 
 
 if __name__ == "__main__":
